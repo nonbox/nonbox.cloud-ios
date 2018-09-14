@@ -68,14 +68,14 @@ class NCBrandColor: NSObject {
         return instance
     }()
     
-    @objc public let brand:                             String = "Nextcloud"
-    @objc public let mailMe:                            String = "ios@nextcloud.com"
-    @objc public let textCopyrightNextcloudiOS:         String = "Nextcloud for iOS %@ © 2018 T.W.S. Inc."
-    @objc public let textCopyrightNextcloudServer:      String = "Nextcloud Server %@"
-    @objc public let loginBaseUrl:                      String = "https://cloud.twsweb.it"
-    @objc public let loginPreferredProviders:           String = "https://nextcloud.com/register";
-    @objc public let pushNotificationServerProxy:       String = "https://push-notifications.nextcloud.com"
-    @objc public let linkLoginProvider:                 String = "https://nextcloud.com/providers"
+    @objc public let brand:                             String = "nonbox.cloud"
+    @objc public let mailMe:                            String = "admin@nonbox.cloud"
+    @objc public let textCopyrightNextcloudiOS:         String = "nonbox cloud for iOS %@ © 2018 nonbox, Inc."
+    @objc public let textCopyrightNextcloudServer:      String = "nonbox cloud server %@"
+    @objc public let loginBaseUrl:                      String = "https://nonbox.cloud"
+    @objc public let loginPreferredProviders:           String = "https://nonbox.cloud";
+    @objc public let pushNotificationServerProxy:       String = "https://push-notifications.nonbox.cloud"
+    @objc public let linkLoginProvider:                 String = "https://nonbox.cloud/providers"
     @objc public let textLoginProvider:                 String = "_login_bottom_label_"
     @objc public let middlewarePingUrl:                 String = ""
     @objc public let webLoginAutenticationProtocol:     String = "nc://"                                          // example "abc://"
@@ -87,7 +87,7 @@ class NCBrandColor: NSObject {
     @objc public var folderDefaultAutoUpload:           String = "Photos"
     
     // Capabilities Group
-    @objc public let capabilitiesGroups:                String = "group.it.twsweb.Crypto-Cloud"
+    @objc public let capabilitiesGroups:                String = "group.io.nonbox.cloud"
     
     // Options
     @objc public let use_login_web_personalized:        Bool = false                                              // Don't touch me !!

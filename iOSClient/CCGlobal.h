@@ -102,29 +102,29 @@
 #define k_permission_can_move                           @"V"
 
 // Session
-#define k_domain_session_queue                          @"it.twsweb.Crypto-Cloud"
+#define k_domain_session_queue                          @"io.nonbox.cloud"
 
-#define k_download_session                              @"it.twsweb.Crypto-Cloud.download.session"
-#define k_download_session_foreground                   @"it.twsweb.Crypto-Cloud.download.sessionforeground"
-#define k_download_session_wwan                         @"it.twsweb.Crypto-Cloud.download.sessionwwan"
-#define k_upload_session                                @"it.twsweb.Crypto-Cloud.upload.session"
-#define k_upload_session_wwan                           @"it.twsweb.Crypto-Cloud.upload.sessionwwan"
-#define k_upload_session_foreground                     @"it.twsweb.Crypto-Cloud.upload.sessionforeground"
+#define k_download_session                              @"io.nonbox.cloud.download.session"
+#define k_download_session_foreground                   @"io.nonbox.cloud.download.sessionforeground"
+#define k_download_session_wwan                         @"io.nonbox.cloud.download.sessionwwan"
+#define k_upload_session                                @"io.nonbox.cloud.upload.session"
+#define k_upload_session_wwan                           @"io.nonbox.cloud.upload.sessionwwan"
+#define k_upload_session_foreground                     @"io.nonbox.cloud.upload.sessionforeground"
 
 // Session Download Upload Extension
 #define k_download_session_extension                    @"com.nextcloud.download.session.extension"
 #define k_upload_session_extension                      @"com.nextcloud.upload.session.extension"
 
 // OperationQueue
-#define k_queue                                         @"it.twsweb.Crypto-Cloud.queue"
-#define k_download_queue                                @"it.twsweb.Crypto-Cloud.download.queue"
-#define k_download_queuewwan                            @"it.twsweb.Crypto-Cloud.download.queuewwan"
-#define k_upload_queue                                  @"it.twsweb.Crypto-Cloud.upload.queue"
-#define k_upload_queuewwan                              @"it.twsweb.Crypto-Cloud.upload.queuewwan"
+#define k_queue                                         @"io.nonbox.cloud.queue"
+#define k_download_queue                                @"io.nonbox.cloud.download.queue"
+#define k_download_queuewwan                            @"io.nonbox.cloud.download.queuewwan"
+#define k_upload_queue                                  @"io.nonbox.cloud.upload.queue"
+#define k_upload_queuewwan                              @"io.nonbox.cloud.upload.queuewwan"
 
 // Service Key Share
 #define k_serviceShareKeyChain                          @"Crypto Cloud"
-#define k_metadataKeyedUnarchiver                       @"it.twsweb.nextcloud.metadata"
+#define k_metadataKeyedUnarchiver                       @"io.nonbox.cloud.metadata"
 
 // TaskIdentifier
 #define k_taskIdentifierDone                            0
