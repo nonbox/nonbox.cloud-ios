@@ -806,31 +806,31 @@
     CTAssetCheckmark *checkmark = [CTAssetCheckmark appearance];
     checkmark.tintColor = [NCBrandColor sharedInstance].brandElement;
     [checkmark setMargin:0.0 forVerticalEdge:NSLayoutAttributeRight horizontalEdge:NSLayoutAttributeTop];
-    
+
     //UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedIn:[CTAssetsPickerController class], nil]; // DEPRECATED iOS9
     UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[CTAssetsPickerController class]]];
-    
+
     [appDelegate aspectNavigationControllerBar:navBar online:YES hidden:NO];
-    
+
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+
             CTAssetCheckmark *checkmark = [CTAssetCheckmark appearance];
             [checkmark setMargin:0.0 forVerticalEdge:NSLayoutAttributeRight horizontalEdge:NSLayoutAttributeBottom];
-            
+
             // init picker
             CTAssetsPickerController *picker = [CTAssetsPickerController new];
-            
+
             // set delegate
             picker.delegate = self;
-            
+
             // to show selection order
             //picker.showsSelectionIndex = YES;
-            
+
             // to present picker as a form sheet in iPad
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
                 picker.modalPresentationStyle = UIModalPresentationFormSheet;
-            
+
             // present picker
             [self presentViewController:picker animated:YES completion:nil];
         });
@@ -853,16 +853,23 @@
 {
     [picker dismissViewControllerAnimated:YES completion:^{
         
-        NSString *serverUrl = [appDelegate getTabBarControllerActiveServerUrl];
-        
-        CreateFormUploadAssets *form = [[CreateFormUploadAssets alloc] initWithServerUrl:serverUrl assets:assets cryptated:NO session:k_upload_session delegate:self];
-        form.title = NSLocalizedString(@"_upload_photos_videos_", nil);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:form];
+            bool useSubFolder = NO;
             
-        [navigationController setModalPresentationStyle:UIModalPresentationFormSheet];
+            NSString *autoUploadPath = [[NCManageDatabase sharedInstance] getAccountAutoUploadPath:appDelegate.activeUrl];
+            NSString *serverUrl = [appDelegate getTabBarControllerActiveServerUrl];
+            
+            // if request create the folder for Auto Upload & the subfolders
+            if ([autoUploadPath isEqualToString:serverUrl])
+                if (![[NCAutoUpload sharedInstance] createAutoUploadFolderWithSubFolder:useSubFolder assets:(PHFetchResult *)assets selector:selectorUploadFile])
+                    return;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self uploadFileAsset:assets serverUrl:serverUrl autoUploadPath:autoUploadPath useSubFolder:useSubFolder session:k_upload_session];
+            });
+        });
         
-        [self presentViewController:navigationController animated:YES completion:nil];
     }];
 }
 
@@ -872,6 +879,7 @@
 
 - (void)saveToPhotoAlbum:(tableMetadata *)metadata
 {
+    NSLog(@"SAVE SELECTED FILE saveToPhotoAlbum");
     NSString *fileNamePath = [CCUtility getDirectoryProviderStorageFileID:metadata.fileID fileNameView:metadata.fileNameView];
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     
@@ -1092,6 +1100,7 @@
 //
 - (void)uploadFileAsset:(NSMutableArray *)assets serverUrl:(NSString *)serverUrl useSubFolder:(BOOL)useSubFolder session:(NSString *)session
 {
+    NSLog(@"UPLOAD ASSET uploadFileAsset");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
  
         NSString *autoUploadPath = [[NCManageDatabase sharedInstance] getAccountAutoUploadPath:appDelegate.activeUrl];
