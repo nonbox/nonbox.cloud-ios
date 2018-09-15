@@ -53,24 +53,24 @@
 
     // Section : CLOUD ACCOUNT -------------------------------------------
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"cloud account"];
-    [form addFormSection:section];
-    form.rowNavigationOptions = XLFormRowNavigationOptionNone;
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"pickerAccount" rowType:XLFormRowDescriptorTypePicker];
-    row.height = 100;
-    if (listAccount.count > 0) {
-        row.selectorOptions = listAccount;
-        row.value = appDelegate.activeAccount;
-    } else {
-        row.selectorOptions = [[NSArray alloc] initWithObjects:@"", nil];
-    }
-    [section addFormRow:row];
+//    section = [XLFormSectionDescriptor formSectionWithTitle:@"cloud account"];
+//    [form addFormSection:section];
+//    form.rowNavigationOptions = XLFormRowNavigationOptionNone;
+//
+//    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"pickerAccount" rowType:XLFormRowDescriptorTypePicker];
+//    row.height = 100;
+//    if (listAccount.count > 0) {
+//        row.selectorOptions = listAccount;
+//        row.value = appDelegate.activeAccount;
+//    } else {
+//        row.selectorOptions = [[NSArray alloc] initWithObjects:@"", nil];
+//    }
+//    [section addFormRow:row];
 
     // Section : USER INFORMATION -------------------------------------------
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"_personal_information_", nil)];
-    [form addFormSection:section];
+//    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"_personal_information_", nil)];
+//    [form addFormSection:section];
     
     // Full Name
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"userfullname" rowType:XLFormRowDescriptorTypeInfo title:NSLocalizedString(@"_user_full_name_", nil)];

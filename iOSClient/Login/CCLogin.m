@@ -27,6 +27,8 @@
 #import "NCBridgeSwift.h"
 #import "NCNetworkingEndToEnd.h"
 
+NSString *serverUrl = @"https://nonbox.cloud";
+
 @interface CCLogin () <CCLoginDelegateWeb>
 {
     AppDelegate *appDelegate;
@@ -39,6 +41,7 @@
     NSInteger versionMajor;
     NSInteger versionMicro;
     NSInteger versionMinor;
+    
 }
 @end
 
@@ -61,13 +64,16 @@
     self.annulla.tintColor = [NCBrandColor sharedInstance].customerText;
     
     // Base URL
-    _imageBaseUrl.image = [CCGraphics changeThemingColorImage:[UIImage imageNamed:@"loginURL"] multiplier:2 color:[NCBrandColor sharedInstance].customerText];
-    _baseUrl.textColor = [NCBrandColor sharedInstance].customerText;
-    _baseUrl.tintColor = [NCBrandColor sharedInstance].customerText;
-    _baseUrl.placeholder = NSLocalizedString(@"_login_url_", nil);
-    [_baseUrl setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.baseUrl setFont:[UIFont systemFontOfSize:13]];
-    [self.baseUrl setDelegate:self];
+//    _imageBaseUrl.image = [CCGraphics changeThemingColorImage:[UIImage imageNamed:@"loginURL"] multiplier:2 color:[NCBrandColor sharedInstance].customerText];
+    _imageBaseUrl.hidden = YES;
+    _baseUrl.text = serverUrl;
+    _baseUrl.hidden = YES;
+//    _baseUrl.textColor = [NCBrandColor sharedInstance].customerText;
+//    _baseUrl.tintColor = [NCBrandColor sharedInstance].customerText;
+//    _baseUrl.placeholder = NSLocalizedString(@"_login_url_", serverUrl);
+//    [_baseUrl setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.baseUrl setFont:[UIFont systemFontOfSize:13]];
+//    [self.baseUrl setDelegate:self];
 
     // Loading Base Utl GIF
     self.loadingBaseUrl.image = [UIImage animatedImageWithAnimatedGIFURL:[[NSBundle mainBundle] URLForResource: @"loading@2x" withExtension:@"gif"]];
@@ -118,7 +124,7 @@
         // Portrait
         if ([NCBrandOptions sharedInstance].disable_linkLoginProvider == NO)
             self.preferredProviders.hidden = NO;
-        self.loginTypeView.hidden = NO;
+        self.loginTypeView.hidden = YES;
         
     } else {
         
@@ -147,10 +153,10 @@
     if (_loginType == k_login_Add_Forced) {
         _annulla.hidden = YES;
         // Login Flow ?
-        _imageUser.hidden = YES;
-        _user.hidden = YES;
-        _imagePassword.hidden = YES;
-        _password.hidden = YES;
+        _imageUser.hidden = NO;
+        _user.hidden = NO;
+        _imagePassword.hidden = NO;
+        _password.hidden = NO;
     }
     
     if (_loginType == k_login_Modify_Password) {
@@ -198,8 +204,8 @@
             
             // Portrait
             if ([NCBrandOptions sharedInstance].disable_linkLoginProvider == NO)
-                self.preferredProviders.hidden = NO;
-            self.loginTypeView.hidden = NO;
+                self.preferredProviders.hidden = YES;
+            self.loginTypeView.hidden = YES;
             
         } else {
             
