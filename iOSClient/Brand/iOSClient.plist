@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>cloud</string>
+	<string>nonbox cloud</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
