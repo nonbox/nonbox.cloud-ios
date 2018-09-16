@@ -98,7 +98,7 @@ NSString *serverUrl = @"https://nonbox.cloud";
     [self.password setDelegate:self];
 
     // Login
-    [self.login setTitle:[NSLocalizedString(@"_login_", nil) uppercaseString] forState:UIControlStateNormal] ;
+    [self.login setTitle:[@"Log in now" uppercaseString] forState:UIControlStateNormal] ;
     self.login.backgroundColor = [NCBrandColor sharedInstance].customerText;
     self.login.tintColor = [UIColor blackColor];
 //    self.login.layer.cornerRadius = 3;

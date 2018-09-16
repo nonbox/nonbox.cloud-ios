@@ -74,8 +74,8 @@ class NCBrandColor: NSObject {
     @objc public let textCopyrightNextcloudiOS:         String = "nonbox cloud for iOS %@ © 2018 nonbox, Inc."
     @objc public let textCopyrightNextcloudServer:      String = "nonbox cloud server %@"
     @objc public let loginBaseUrl:                      String = "https://nonbox.cloud"
-    @objc public let loginPreferredProviders:           String = "https://nonbox.cloud";
-    @objc public let pushNotificationServerProxy:       String = "https://push-notifications.nonbox.cloud"
+    @objc public let loginPreferredProviders:           String = "https://nonbox.cloud/index.php/apps/registration";
+    @objc public let pushNotificationServerProxy:       String = "https://push.nonbox.cloud"
     @objc public let linkLoginProvider:                 String = "https://nonbox.cloud/providers"
     @objc public let textLoginProvider:                 String = "_login_bottom_label_"
     @objc public let middlewarePingUrl:                 String = ""
@@ -99,7 +99,7 @@ class NCBrandColor: NSObject {
     @objc public let use_storeLocalAutoUploadAll:       Bool = false
     
     @objc public let disable_intro:                     Bool = false
-    @objc public let disable_linkLoginProvider:         Bool = false
+    @objc public let disable_linkLoginProvider:         Bool = true
     @objc public let disable_request_login_url:         Bool = false
     @objc public let disable_multiaccount:              Bool = false
     @objc public let disable_manage_account:            Bool = false

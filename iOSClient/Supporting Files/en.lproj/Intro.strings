@@ -33,4 +33,4 @@
 "_introNoCryptoCloud_1_text_"  = "Crypto Cloud encryption protocol is no longer available, you can still decrypt your files by downloading the free app from AppStore\n\n'CryptoCloud for Nextcloud'\n\nSoon there will be a new EndToEnd protocol available on all Nextcloud clients\n\n\nTap to Start";
 
 "_log_in_"          = "Log in";
-"_sign_up_"         = "Sign up with provider";
+"_sign_up_"         = "Create account";

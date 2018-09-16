@@ -90,12 +90,12 @@
     if (height <= 568) {
         titleIconPositionY = 20;
     } else {
-        titleIconPositionY = 100;
+        titleIconPositionY = 150;
     }
     
     titlePositionY = height / 2 + 40.0;
     descPositionY  = height / 2;
-    buttonPosition = height / 2 + 120.0;
+    buttonPosition = height / 2 + 90.0;
     
     // Button
     
@@ -103,7 +103,7 @@
     buttonView.userInteractionEnabled = YES ;
     
     UIButton *buttonLogin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buttonLogin.frame = CGRectMake(50.0, 0.0, width - 100.0, 40.0);
+    buttonLogin.frame = CGRectMake(50.0, 0.0, width - 100.0, 50.0);
     buttonLogin.layer.cornerRadius = 3;
     buttonLogin.clipsToBounds = YES;
     [buttonLogin setTitle:[NSLocalizedStringFromTable(@"_log_in_", @"Intro", nil) uppercaseString] forState:UIControlStateNormal];
@@ -113,17 +113,19 @@
     [buttonLogin addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchDown];
     
     UIButton *buttonSignUp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buttonSignUp.frame = CGRectMake(50.0, 60.0, width - 100.0, 40.0);
+    buttonSignUp.frame = CGRectMake(50.0, 70.0, width - 100.0, 50.0);
     buttonSignUp.layer.cornerRadius = 3;
     buttonSignUp.clipsToBounds = YES;
     [buttonSignUp setTitle:[NSLocalizedStringFromTable(@"_sign_up_", @"Intro", nil) uppercaseString] forState:UIControlStateNormal];
     buttonSignUp.titleLabel.font = [UIFont systemFontOfSize:14];
     [buttonSignUp setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    buttonSignUp.backgroundColor = [UIColor colorWithRed:25.0/255.0 green:89.0/255.0 blue:141.0/255.0 alpha:1.000];
+    buttonSignUp.backgroundColor = [UIColor colorWithRed:25.0/255.0 green:89.0/255.0 blue:141.0/255.0 alpha:0];
     [buttonSignUp addTarget:self action:@selector(signUp:) forControlEvents:UIControlEventTouchDown];
     
     [buttonView addSubview:buttonLogin];
     [buttonView addSubview:buttonSignUp];
+    
+    
     
     // Pages
     
@@ -183,12 +185,13 @@
 
     // INTRO
     
-    self.intro = [[EAIntroView alloc] initWithFrame:self.rootView.bounds andPages:@[page1,page2,page3]];
+    self.intro = [[EAIntroView alloc] initWithFrame:self.rootView.bounds andPages:@[page1]]; // ,page2,page3
 
     self.intro.tapToNext = NO;
     self.intro.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     self.intro.pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     self.intro.pageControl.backgroundColor = [[NCBrandColor sharedInstance] customer];
+    self.intro.pageControl.hidden = YES;
 //    [intro.skipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //    intro.skipButton.enabled = NO;
     self.intro.swipeToExit = NO ;
